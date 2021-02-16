@@ -33,8 +33,15 @@ namespace ThreeAmigos.UI
             });
 
             services.AddDbContext<ThreeAmigosDbContect>();
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<IRepository<Student>, BaseRepository<Student>>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IRepository<Product>, BaseRepository<Product>>();
+            services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<IRepository<Brand>, BaseRepository<Brand>>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IRepository<Category>, BaseRepository<Category>>();
+            
+
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

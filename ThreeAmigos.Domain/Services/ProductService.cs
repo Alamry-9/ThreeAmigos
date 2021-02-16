@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace ThreeAmigos.Domain.Services
 {
-    public class StudentService : IStudentService
+    public class ProductService : IProductService
     {
-        private readonly IRepository<Student> _repository;
+        private readonly IRepository<Product> _repository;
 
-        public StudentService(IRepository<Student> repository)
+        public ProductService(IRepository<Product> repository)
         {
             _repository = repository;
         }
 
-        public async Task AddStudentAsync(Student newStudent)
+        public async Task AddProductAsync(Product newProduct)
         {
-            await _repository.Add(newStudent);
+            await _repository.Add(newProduct);
             await _repository.Save();
         }
 
-        public async Task<IEnumerable<Student>> GetStudentsAsync()
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
             return await _repository.GetAllAsync();
         }

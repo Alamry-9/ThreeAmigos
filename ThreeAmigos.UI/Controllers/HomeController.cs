@@ -9,44 +9,24 @@ namespace ThreeAmigos.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IStudentService _service;
+       
 
-        public HomeController(IStudentService service)
+        public HomeController()
         {
 
-            _service = service;
-
-            //TODO simple seed
-            _service.AddStudentAsync(new Student
-            {
-                IdStudent = 1,
-                FirstName = "John",
-                LastName = "Smith"
-            });
-
-            _service.AddStudentAsync(new Student
-            {
-                IdStudent = 2,
-                FirstName = "Ada",
-                LastName = "Jackie"
-            });
+           
 
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _service.GetStudentsAsync());
+
+            return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

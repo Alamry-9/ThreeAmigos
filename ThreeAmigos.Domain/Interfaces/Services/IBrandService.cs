@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 
 namespace ThreeAmigos.Domain.Interfaces.Services
 {
-    public interface IStudentService
+    public interface IBrandService
     {
-        Task<IEnumerable<Student>> GetStudentsAsync();
-        Task AddStudentAsync(Student newStudent);
+        Task<IEnumerable<Brand>> GetBrandsAsync();
+        Task AddBrandAsync(Brand newBrand);
+        
     }
 }
