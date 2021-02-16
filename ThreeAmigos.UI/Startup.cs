@@ -39,8 +39,7 @@ namespace ThreeAmigos.UI
             services.AddScoped<IRepository<Brand>, BaseRepository<Brand>>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRepository<Category>, BaseRepository<Category>>();
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<IRepository<Student>, BaseRepository<Student>>();
+            
 
             
 
