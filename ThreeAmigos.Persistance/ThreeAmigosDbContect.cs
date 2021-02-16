@@ -18,11 +18,10 @@ namespace ThreeAmigos.Persistance
     public class ThreeAmigosDbContect : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<ProductStore> StoreProduct { get; set; }
 
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Studies> Studies { get; set; }
-        public DbSet<EnrolledStudent> StudentsEnrolled { get; set; }
 
         public ThreeAmigosDbContect() { }
 

@@ -10,22 +10,24 @@ namespace ThreeAmigos.UI.Controllers
     public class BrandsController : Controller
     {
         
-        private readonly IProductService _service;
+        private readonly IBrandService _service;
 
-        public BrandsController(IProductService service)
+        public BrandsController(IBrandService service)
         {
             
             _service = service;
 
             //TODO simple seed
-            _service.AddProductAsync(new Product
+            _service.AddBrandAsync(new Brand
             {
+                Id = 1,
                 Name = "Soggy Sponge",
                 Active = true
             });
 
-            _service.AddProductAsync(new Product
+            _service.AddBrandAsync(new Brand
             {
+                Id = 2,
                 Name = "Damp Squib",
                 Active = false
             });
@@ -35,7 +37,7 @@ namespace ThreeAmigos.UI.Controllers
         public async Task<IActionResult> Index()
         {
             
-            return View(await _service.GetProductsAsync());
+            return View(await _service.GetBrandsAsync());
         }
 
 

@@ -9,23 +9,25 @@ namespace ThreeAmigos.UI.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly IProductService _service;
+        private readonly ICategoryService _service;
 
-        public CategoriesController(IProductService service)
+        public CategoriesController(ICategoryService service)
         {
 
             _service = service;
 
             //TODO simple seed
-            _service.AddProductAsync(new Product
+            _service.AddCategoryAsync(new Category
             {
+                Id = 1,
                 Name = "Covers",
                 Description = "Davison Stores pride ourselves on our poor range of covers for your mobile device at premium prices.  If you're lukcy your phone or tablet will be protected from any dents, scratches and scuffs.",
                 Active = true
             });
 
-            _service.AddProductAsync(new Product
+            _service.AddCategoryAsync(new Category
             {
+                Id = 2,
                 Name = "Case",
                 Description = "Browse our wide range of cases for phones and tablets that will help you to keep your mobile device protected from the elements.",
                 Active = false
@@ -36,7 +38,7 @@ namespace ThreeAmigos.UI.Controllers
         public async Task<IActionResult> Index()
         {
             
-            return View(await _service.GetProductsAsync());
+            return View(await _service.GetCategorysAsync());
         }
 
         public IActionResult Privacy()

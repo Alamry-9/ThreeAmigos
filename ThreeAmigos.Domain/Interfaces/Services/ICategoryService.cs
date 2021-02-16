@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace ThreeAmigos.Domain.Interfaces.Services
 {
-    public interface IProductService
+    public interface ICategoryService
     {
-        Task<IEnumerable<Product>> GetProductsAsync();
-        Task AddProductAsync(Product newProduct);
+        Task<IEnumerable<Category>> GetCategorysAsync();
+        Task AddCategoryAsync(Category newCategory);
         
     }
 }

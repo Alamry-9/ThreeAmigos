@@ -9,11 +9,11 @@ namespace ThreeAmigos.Persistance.Configurations
         public void Configure(EntityTypeBuilder<ProductStore> builder)
         {
             builder.HasKey(es => es.IdProductStore);
-
+            /*
             builder.HasOne(es => es.Product)
                    .WithMany(s => s.StoreProduct)
                    .HasForeignKey(es => es.IdProduct);
-
+            */
             
         }
     }

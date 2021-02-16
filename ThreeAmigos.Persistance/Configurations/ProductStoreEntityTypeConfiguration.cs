@@ -9,7 +9,7 @@ namespace ThreeAmigos.Persistance.Configurations
         public void Configure(EntityTypeBuilder<EnrolledStudent> builder)
         {
             builder.HasKey(es => es.IdEnrolledStudent);
-
+            /*
             builder.HasOne(es => es.Student)
                    .WithMany(s => s.StudentEnrolled)
                    .HasForeignKey(es => es.IdStudent);
@@ -17,6 +17,7 @@ namespace ThreeAmigos.Persistance.Configurations
             builder.HasOne(es => es.Studies)
                    .WithMany(s => s.StudentsEnrolled)
                    .HasForeignKey(es => es.IdStudies);
+            */
         }
     }
 }
