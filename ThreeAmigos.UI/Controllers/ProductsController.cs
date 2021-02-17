@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ThreeAmigos.UI.Controllers
 {
+    
     public class ProductsController : Controller
     {
         private readonly IProductService _service;
