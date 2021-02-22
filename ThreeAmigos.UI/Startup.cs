@@ -104,9 +104,7 @@ namespace ThreeAmigos.UI
             services.AddDbContext<ThreeAmigosDbContect>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IRepository<Product>, BaseRepository<Product>>();
-            services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<IRepository<Brand>, BaseRepository<Brand>>();
-            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRepository<Category>, BaseRepository<Category>>();
             
 

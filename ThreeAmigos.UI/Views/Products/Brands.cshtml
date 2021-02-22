@@ -1,4 +1,4 @@
-@model IEnumerable<Brand>
+@model IEnumerable<Product>
 
 @{
     ViewData["Title"] = "Brands";
@@ -24,15 +24,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Select(model => model.Brand).Distinct())
+
                 {
-                    
+
                     <tr>
                         <td>
-                            @item.Name
+                            @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @item.Active
+                            @Html.DisplayFor(modelItem => item.Active)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
