@@ -5,6 +5,8 @@ using ThreeAmigos.UI.Models;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
+using System.Linq;
 
 namespace ThreeAmigos.UI.Controllers
 {
@@ -91,22 +93,43 @@ namespace ThreeAmigos.UI.Controllers
 
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            
-            return View(await _service.GetProductsAsync());
+            ViewData["CurrentFilter"] = searchString;
+            System.Collections.Generic.IEnumerable<Product> products = await _service.GetProductsAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString)
+                                          || s.Brand.Name.Contains(searchString)
+                                          || s.Category.Name.Contains(searchString));
+                                       
+            }
+            return View(products);
         }
 
-        public async Task<IActionResult> Brands()
+        public async Task<IActionResult> Brands(string sortOrder, string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+            System.Collections.Generic.IEnumerable<Product> products = await _service.GetProductsAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Brand.Name.Contains(searchString));
 
-            return View(await _service.GetProductsAsync());
+            }
+            return View(products);
         }
 
-        public async Task<IActionResult> Categories()
+        public async Task<IActionResult> Categories(string sortOrder, string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+            System.Collections.Generic.IEnumerable<Product> products = await _service.GetProductsAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Category.Name.Contains(searchString)
+                                          || s.Category.Description.Contains(searchString));
 
-            return View(await _service.GetProductsAsync());
+            }
+            return View(products);
         }
 
 
@@ -114,6 +137,21 @@ namespace ThreeAmigos.UI.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            
+
+            return View(await _service.GetProductsAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product product)
+        {
+            await _service.AddProductAsync(product);
+            return View(product);
         }
     }
 }
