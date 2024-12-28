@@ -9,12 +9,12 @@ namespace ThreeAmigos.UI.Controllers
 {
     public class HomeController : Controller
     {
-       
+
 
         public HomeController()
         {
 
-           
+
 
         }
 
@@ -25,6 +25,11 @@ namespace ThreeAmigos.UI.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }

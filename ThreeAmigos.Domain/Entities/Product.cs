@@ -18,5 +18,6 @@ namespace ThreeAmigos.Domain.Entities
         public Brand Brand { get; set; }
         public virtual ICollection<ProductStore> StoreProduct { get; set; }
         public int IdProduct { get; set; }
+     
     }
 }
